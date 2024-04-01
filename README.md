@@ -4,6 +4,10 @@
 <b>Command to run bot:</b> `docker-compose up -d`
 <b>Command to shut down bot:</b> `docker-compose down`
 
+<h1>This bot is deployed to AWS Elastic Beanstalk</h1>
+
+Feel free to go to terraform-deploy.yml to either build or destroy the cloud infrastructure.
+
 - There are 2 functionalities of this bot: add/remove roles + load resources for language classes
 - (Note all commands are space sensitive but NOT case sensitive)
 - Class Name: Beginners, Intermediate, Advanced, English
