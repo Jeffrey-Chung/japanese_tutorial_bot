@@ -2,6 +2,7 @@
 <h2>How to use bot: </h2>
 
 <b>Command to run bot:</b> `docker-compose up -d`
+
 <b>Command to shut down bot:</b> `docker-compose down`
 
 <h1>This bot is deployed to AWS Elastic Beanstalk</h1>
