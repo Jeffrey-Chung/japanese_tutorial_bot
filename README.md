@@ -8,6 +8,8 @@
 
 Feel free to go to terraform-deploy.yml to either build or destroy the cloud infrastructure.
 
+Overview:
+----------------------------------------------------------------------------------------------------------
 - There are 2 functionalities of this bot: add/remove roles + load resources for language classes
 - (Note all commands are space sensitive but NOT case sensitive)
 - Class Name: Beginners, Intermediate, Advanced, English
