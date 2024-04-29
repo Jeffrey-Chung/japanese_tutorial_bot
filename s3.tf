@@ -2,7 +2,19 @@ resource "aws_s3_bucket" "jchung_s3_bucket" {
   bucket = var.bucket_name
 }
 
-#tfsec:ignore:encryption-customer-key
+resource "aws_s3_bucket" "jchung_logging_bucket" {
+  bucket        = var.logging_bucket_name
+  force_destroy = true
+}
+
+resource "aws_s3_bucket_logging" "jchung_s3_logging" {
+  bucket = aws_s3_bucket.jchung_s3_bucket.id
+
+  target_bucket = aws_s3_bucket.jchung_logging_bucket.id
+  target_prefix = "log/"
+}
+
+
 resource "aws_s3_bucket_server_side_encryption_configuration" "jchung_s3_server_side_encryption" {
   bucket = aws_s3_bucket.jchung_s3_bucket.id
 
@@ -36,6 +48,14 @@ resource "aws_s3_bucket_acl" "jchung_s3_bucket_acl" {
   ]
   bucket = aws_s3_bucket.jchung_s3_bucket.id
   acl    = "private"
+}
+
+# Apply versioning to logging bucket for backup purposes
+resource "aws_s3_bucket_versioning" "jchung_logging_bucket_versioning" {
+  bucket = aws_s3_bucket.jchung_logging_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
 
 # Upload the docker compose file to S3 bucket
