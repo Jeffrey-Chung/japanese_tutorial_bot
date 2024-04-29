@@ -2,6 +2,14 @@ resource "aws_s3_bucket" "jchung_s3_bucket" {
   bucket = var.bucket_name
 }
 
+# Apply versioning to logging bucket for backup purposes
+resource "aws_s3_bucket_versioning" "jchung_s3_bucket_versioning" {
+  bucket = aws_s3_bucket.jchung_s3_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
 #tfsec:ignore:encryption-customer-key
 resource "aws_s3_bucket_server_side_encryption_configuration" "jchung_s3_server_side_encryption" {
   bucket = aws_s3_bucket.jchung_s3_bucket.id
@@ -38,6 +46,8 @@ resource "aws_s3_bucket_acl" "jchung_s3_bucket_acl" {
   acl    = "private"
 }
 
+# Logging bucket for jchung_s3_bucket
+#tfsec:ignore:aws-s3-enable-bucket-logging
 resource "aws_s3_bucket" "jchung_logging_bucket" {
   bucket        = var.logging_bucket_name
   force_destroy = true
