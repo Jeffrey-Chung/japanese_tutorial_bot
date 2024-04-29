@@ -9,9 +9,9 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_environment" {
   solution_stack_name = "64bit Amazon Linux 2023 v4.2.2 running Docker"
 
   setting {
-      namespace = "aws:autoscaling:launchconfiguration"
-      name      = "IamInstanceProfile"
-      value     = "aws-elasticbeanstalk-ec2-role"
-    }
+    namespace = "aws:autoscaling:launchconfiguration"
+    name      = "IamInstanceProfile"
+    value     = "aws-elasticbeanstalk-ec2-role"
+  }
 }
 
