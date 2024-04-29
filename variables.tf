@@ -1,6 +1,9 @@
 variable "bucket_name" {
   default = "tf-aws-japanese-language-bot-files-bucket"
 }
+variable "logging_bucket_name" {
+  default = "tf-aws-japanese-language-bot-files-logging-bucket"
+}
 variable "region" {
   default = "ap-southeast-2"
 }
